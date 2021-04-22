@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>API Book Collector</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/dist/app.js"></script>
+</head>
+<body>
+    <header>
+        <h1>book collection</h1>
+    </header>
+    <main>
+        <form>
+            <label for="bookSearch">Search for a book?</label><input type="text" id="bookSearch" placeholder="Search by author..."/>
+        </form>
+        <section id="bookDisplay">
+            <div class="bookDisplayCard">
+                <img src="images/foundation_cover_test.jpeg" alt="" />
+                <div class="bookInfo">
+                    <h3>{{title}}</h3>
+                    <h3>{{author}}</h3>
+                    <h3>{{first_published_year}}</h3>
+                    <a href="#">Find me on Good Reads!</a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

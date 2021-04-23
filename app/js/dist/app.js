@@ -6,22 +6,52 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 function getData(_x) {
   return _getData.apply(this, arguments);
-}
+} // document.querySelector('form').addEventListener('submit', (e) => {
+//     e.preventDefault()
+//     getData(e.target[0].value)
+//     e.target[0].value = ''
+// })
+
 
 function _getData() {
   _getData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(inputTitle) {
-    var response, template, json;
+    var data, data2, template, response, json, html;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            response = fetch("https://openlibrary.org/search.json?q=".concat(inputTitle));
-            template = fetch('template.hbs');
-            json = response.json();
-            console.log(template.text());
-            console.log(json);
+            _context.next = 2;
+            return fetch('js/template.hbs');
+
+          case 2:
+            data = _context.sent;
+            _context.next = 5;
+            return data.text();
 
           case 5:
+            data2 = _context.sent;
+            template = Handlebars.compile(data2);
+            _context.next = 9;
+            return fetch("https://openlibrary.org/search.json?title=".concat(inputTitle, "&limit=6"));
+
+          case 9:
+            response = _context.sent;
+            _context.next = 12;
+            return response.json();
+
+          case 12:
+            json = _context.sent;
+            console.log(template);
+            console.log(json);
+            _context.next = 17;
+            return template(json);
+
+          case 17:
+            html = _context.sent;
+            console.log(html);
+            document.querySelector('#bookDisplay').innerHTML = html;
+
+          case 20:
           case "end":
             return _context.stop();
         }
@@ -30,4 +60,9 @@ function _getData() {
   }));
   return _getData.apply(this, arguments);
 }
+
+document.querySelector('#bookSearch').addEventListener('keyup', function (e) {
+  e.preventDefault();
+  getData(e.target.value);
+});
 //# sourceMappingURL=app.js.map

@@ -24,6 +24,7 @@ form {
     color: white;
     background-color: #25273c;
     padding: 1rem 2rem;
+    margin-bottom: 1rem;
     &:focus {
       outline: blue;
     }
@@ -34,18 +35,29 @@ form {
   width: 85%;
   padding: 1rem;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .bookDisplayCard {
   display: grid;
   grid-template-columns: 1fr 2fr;
   padding: 1rem;
+  margin-bottom: 1rem;
   background-color: rgba(37,39,60, .8);
   border-radius: 5px;
   box-shadow: 0 1rem 3rem -2rem;
+  & img {
+    width: 80%;
+  }
   & .bookInfo {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+  }
+  & div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
   }
 }

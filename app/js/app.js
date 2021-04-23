@@ -1,25 +1,30 @@
-async function getData(inputTitle) {
+let inputArray = document.querySelectorAll('form input[type=text]')
+
+async function getData(string) {
     let data = await fetch('js/template.hbs')
     let data2 = await data.text()
     let template = Handlebars.compile(data2)
-    let response = await fetch(`https://openlibrary.org/search.json?title=${inputTitle}&limit=6`)
+    let response = await fetch(string)
     let json = await response.json()
-
-    console.log(template)
-    console.log(json)
-
-    let html = await template(json)
-    console.log(html)
-    document.querySelector('#bookDisplay').innerHTML = html
+    document.querySelector('#bookDisplay').innerHTML = await template(json)
 }
 
-// document.querySelector('form').addEventListener('submit', (e) => {
-//     e.preventDefault()
-//     getData(e.target[0].value)
-//     e.target[0].value = ''
-// })
+function buildQueryString(inputTitle = '', inputAuthor = '') {
+    let result = `https://openlibrary.org/search.json?`
+    if (inputTitle) {
+        result += `title=${inputTitle}&`
+    }
+    if (inputAuthor) {
+        result += `author=${inputAuthor}&`
+    }
+    result += 'limit=6'
+    return result
+}
 
-document.querySelector('#bookSearch').addEventListener('keyup', (e) => {
-    e.preventDefault()
-    getData(e.target.value)
+document.querySelectorAll('form input[type=text]').forEach((input) => {
+    input.addEventListener('keyup', (e) => {
+        e.preventDefault()
+        let string = buildQueryString(inputArray[0].value, inputArray[1].value)
+        getData(string)
+    })
 })

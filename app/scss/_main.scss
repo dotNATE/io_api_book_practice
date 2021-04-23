@@ -44,7 +44,7 @@ form {
   grid-template-columns: 1fr 2fr;
   padding: 1rem;
   margin-bottom: 1rem;
-  background-color: rgba(37,39,60, .8);
+  background-color: rgba(37,39,60, .9);
   border-radius: 5px;
   box-shadow: 0 1rem 3rem -2rem;
   & img {
@@ -54,10 +54,10 @@ form {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    color: $secondary-color;
   }
-  & div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+  & .goodReads {
+    text-decoration: none;
+    color: $primary-color;
   }
 }

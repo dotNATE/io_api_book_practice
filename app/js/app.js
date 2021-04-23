@@ -1,7 +1,7 @@
 let inputArray = document.querySelectorAll('form input[type=text]')
 
 async function getData(string) {
-    let data = await fetch('app/js/template.hbs')
+    let data = await fetch('js/template.hbs')
     let data2 = await data.text()
     let template = Handlebars.compile(data2)
     let response = await fetch(string)

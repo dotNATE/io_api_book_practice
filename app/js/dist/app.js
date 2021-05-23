@@ -18,7 +18,7 @@ function _getData() {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
-            return fetch('js/template.hbs');
+            return fetch('app/js/template.hbs');
 
           case 2:
             data = _context.sent;
